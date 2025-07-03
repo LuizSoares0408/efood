@@ -9,5 +9,8 @@ export const ButtonLink = styled(Link)`
   font-size: 14px;
   font-weight: bold;
   padding: 4px 6px;
+  margin: 0 8px 16px 8px;
   text-decoration: none;
+  display: block;
+  width: fit-content;
 `
