@@ -1,9 +1,12 @@
-import apresentacao from '../../assets/images/apresentacao.png'
-import { Container, Imagemapresentacao } from './styles'
+import fundoPerfil from '../../assets/images/fundoPerfil.png'
+import { Container, NomeRestaurante, Titulo } from './styles'
 
 const Apresentacao = () => (
-  <Container>
-    <Imagemapresentacao src={apresentacao} alt="Apresentação do restaurante" />
+  <Container backgroundImage={fundoPerfil}>
+    <div className='container'>
+    <Titulo>Italiana</Titulo>
+    <NomeRestaurante>La Dolce Vita Trattoria</NomeRestaurante>
+    </div>
   </Container>
 )
 
