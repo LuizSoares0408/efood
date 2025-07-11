@@ -7,6 +7,9 @@ export const Card = styled.div`
   border: 1px solid;
   border-color: ${cores.vermelho};
   overflow: hidden;
+  text-decoration: none;
+  width: 472px;
+  height: 398px;
 `
 export const Image = styled.img`
   width: 100%;

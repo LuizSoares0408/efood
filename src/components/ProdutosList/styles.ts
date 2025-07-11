@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-import { Props } from '.'
-
-export const Container = styled.section<Omit<Props, 'title'>>`
+export const Container = styled.section`
   margin-top: 56px;
   margin-bottom: 120px;
 `

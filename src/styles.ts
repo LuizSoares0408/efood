@@ -4,7 +4,8 @@ export const cores = {
   fundo: '#FFF8F2',
   vermelho: '#E66767',
   letraTag: '#FFEBD9',
-  fundoCard: '#FFFFFF'
+  fundoCard: '#FFFFFF',
+  branca: '#FFFFFF'
 }
 
 export const GlobalCss = createGlobalStyle`

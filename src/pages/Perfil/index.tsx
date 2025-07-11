@@ -1,61 +1,47 @@
-import Apresentacao from '../../components/Apresentação'
-import ProdutosList from '../../components/ProdutosList'
-import HeaderPerfil from '../../HeaderPerfil'
-import Products from '../../models/Products'
+import { useParams } from 'react-router-dom';
+import Apresentacao from '../../components/Apresentação';
+import ProdutosList from '../../components/ProdutosList';
+import HeaderPerfil from '../../HeaderPerfil';
 
-import pizza from '../../assets/images/pizza.png'
+import { useEffect, useState } from 'react';
+import { Food, Cardapio } from '../Home';
 
-const produtos: Products[] = [
-  {
-    id: 1,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
-  },
-  {
-    id: 2,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
-  },
-  {
-    id: 3,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
-  },
-  {
-    id: 4,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
-  },
-  {
-    id: 5,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
-  },
-  {
-    id: 6,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    image: pizza
+const Perfil = () => {
+  const { id } = useParams<{ id: string }>(); 
+
+  const [perfil, setPerfil] = useState<Food | null>(null);
+
+  useEffect(() => {
+    if (id) { 
+      fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`Erro na API: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data: Food) => { 
+          setPerfil(data); 
+          
+        })
+        .catch(error => {
+          console.error("Erro ao carregar perfil do restaurante:", error);
+          
+        });
+    }
+  }, [id]); 
+
+  if (!perfil) {
+    return <h3>Carregando...</h3>;
   }
-]
 
-const Perfil = () => (
-  <>
-    <HeaderPerfil />
-    <Apresentacao />
-    <ProdutosList produtos={produtos} />
-  </>
-)
+  return (
+    <>
+      <HeaderPerfil />
+      <Apresentacao foods={perfil} />
+      <ProdutosList produtos={perfil.cardapio || []} />
+    </>
+  );
+};
 
-export default Perfil
+export default Perfil;

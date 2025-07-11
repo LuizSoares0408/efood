@@ -1,13 +1,20 @@
-import fundoPerfil from '../../assets/images/fundoPerfil.png'
 import { Container, NomeRestaurante, Titulo } from './styles'
+import { Food } from '../../pages/Home'
 
-const Apresentacao = () => (
-  <Container backgroundImage={fundoPerfil}>
+type Props = {
+  foods: Food 
+}
+
+const Apresentacao = ({foods}: Props) => {
+
+  return(
+  <Container style={{backgroundImage: `url(${foods.capa})`}}>
     <div className='container'>
-    <Titulo>Italiana</Titulo>
-    <NomeRestaurante>La Dolce Vita Trattoria</NomeRestaurante>
+    <Titulo>{foods.tipo}</Titulo>
+    <NomeRestaurante>{foods.titulo}</NomeRestaurante>
     </div>
   </Container>
-)
+  ) 
+}
 
 export default Apresentacao

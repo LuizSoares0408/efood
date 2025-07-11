@@ -8,9 +8,9 @@ type Props = {
   children: string
 }
 
-const ButtonCarrinho = ({ title, to, children }: Props) => {
+const ButtonCarrinho = ({ title, to, children, onClick }: Props) => {
   return (
-    <ButtonLink to={to as string} title={title} type={'link'}>
+    <ButtonLink to={to as string} title={title} type={'link'} onClick={onClick}>
       {children}
     </ButtonLink>
   )

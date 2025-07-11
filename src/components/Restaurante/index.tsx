@@ -17,6 +17,7 @@ type Props = {
   image: string
   destaque: boolean
   nota: string
+  id: number
 }
 
 const Product = ({
@@ -25,8 +26,18 @@ const Product = ({
   description,
   image,
   destaque,
-  nota
-}: Props) => (
+  nota,
+  id
+}: Props) => {
+
+    const getDescricao = (descricao: string) => {
+    if (descricao.length > 95) {
+      return descricao.slice(0, 240) + '...'
+    }
+    return descricao
+  }
+
+  return (
   <Card>
     <Image src={image} alt={title} />
     <TagsContainer>
@@ -37,11 +48,13 @@ const Product = ({
       <p>{nota}</p>
       <img src={estrela} alt="Estrela" />
     </NotaEstrela>
-    <Descricao>{description}</Descricao>
-    <Button type="link" to="/perfil" title="Clique aqui para saber mais">
+    <Descricao>{getDescricao(description)}</Descricao>
+    <Button type="link" to={`/perfil/${id}`} title="Clique aqui para saber mais">
       Saiba mais
     </Button>
   </Card>
-)
+  )
+}
+
 
 export default Product
