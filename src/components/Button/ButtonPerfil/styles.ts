@@ -13,5 +13,4 @@ export const ButtonLink = styled(Link)`
   text-decoration: none;
   display: block;
   text-align: center;
-
 `

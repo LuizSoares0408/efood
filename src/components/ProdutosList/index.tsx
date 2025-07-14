@@ -15,9 +15,8 @@ const ProdutosList = ({ produtos }: Props) => {
         {produtos.map((item: Cardapio) => (
           <Produtos
             key={item.id}
-            description={item.descricao}
-            image={item.foto}
-            title={item.nome} descricao={item.descricao} porcao={item.porcao} preco={item.preco} />
+            cardapio={item}
+            />
         ))}
       </List>
     </div>

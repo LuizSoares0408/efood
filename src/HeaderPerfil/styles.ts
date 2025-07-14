@@ -17,7 +17,6 @@ export const HeaderContent = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1024px;
-  padding: 0 16px;
 `
 
 export const Titulo = styled.p`
@@ -25,6 +24,14 @@ export const Titulo = styled.p`
   color: ${cores.vermelho};
   font-weight: bold;
   text-align: center;
+`
+export const CartButton = styled.a`
+  font-size: 18px;
+  color: ${cores.vermelho};
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
 `
 
 export const Logo = styled.img`

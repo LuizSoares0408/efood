@@ -1,16 +1,17 @@
 import { ButtonLink } from '../ButtonPerfil/styles'
 
 type Props = {
-  type: 'link'
+  type: 'link' | 'button'
   title: string
   to?: string
   onClick?: () => void
-  children: string
+  children?: string
+  className?: string
 }
 
-const ButtonCarrinho = ({ title, to, children, onClick }: Props) => {
+const ButtonCarrinho = ({ title, to, children, onClick, className }: Props) => {
   return (
-    <ButtonLink to={to as string} title={title} type={'link'} onClick={onClick}>
+    <ButtonLink to={to as string} title={title} type={'link'} onClick={onClick} className={className}>
       {children}
     </ButtonLink>
   )

@@ -2,23 +2,15 @@ import ButtonCarrinho from '../Button/ButtonPerfil'
 import fechar from '../../assets/images/fechar.png'
 import { Card, Descricao, Titulo, Image, Modal, ModalContent, ButtonModal } from './styles'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+import { Cardapio } from '../../pages/Home'
 
 type Props = {
-  title: string
-  description: string
-  image: string
-  descricao: string,
-  porcao: string
-  preco: number
+  cardapio: Cardapio
 }
 
-const Produtos = ({  title,
-  description,
-  image,
-  descricao,
-  porcao,
-  preco
-}: Props) => {
+const Produtos = ({ cardapio }: Props) => {
 
   const [modalEstaAberto, setModalEstaAberto] = useState(false);
   
@@ -29,12 +21,19 @@ const Produtos = ({  title,
     return descricao
   }
 
+  const dispatch = useDispatch()
+    
+  const addToCart = () => {
+        dispatch(add(cardapio))
+        dispatch(open())
+    }
+
   return (
   <>
   <Card>
-    <Image src={image} />
-    <Titulo>{title}</Titulo>
-    <Descricao>{getDescricao(description)}</Descricao>
+    <Image src={cardapio.foto} />
+    <Titulo>{cardapio.nome}</Titulo>
+    <Descricao>{getDescricao(cardapio.descricao)}</Descricao>
     <ButtonCarrinho
       type="link"
       to=""
@@ -48,13 +47,13 @@ const Produtos = ({  title,
   </Card>
   <Modal className={modalEstaAberto ? 'visivel' : ''}>
     <ModalContent className='container'>
-      <img src={image} alt='Foto da pizza' />
+      <img src={cardapio.foto} alt='Foto do prato' />
       <div>
-      <h4>{title}</h4>
+      <h4>{cardapio.nome}</h4>
       <img className='fechar' src={fechar} alt='Ícone de fechar' onClick={() => setModalEstaAberto(false)} />
-      <p>{descricao}</p> <br />
-      <p>Serve: {porcao}</p>
-    <ButtonModal to={''} type='link' title='Clique aqui para adicionar ao carrinho'>Adicionar ao carrinho - <span>R${preco}</span></ButtonModal>
+      <p>{cardapio.descricao}</p> <br />
+      <p>Serve: {cardapio.porcao}</p>
+    <ButtonModal onClick={addToCart} to={''} type='link' title='Clique aqui para adicionar ao carrinho'>Adicionar ao carrinho - <span>{cardapio.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></ButtonModal>
       </div>
     </ModalContent>
     <div className='overlay' onClick={() => setModalEstaAberto(false)}></div>
