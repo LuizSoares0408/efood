@@ -7,22 +7,17 @@ type Props = {
 }
 
 const ProdutosList = ({ produtos }: Props) => {
-
   return (
-  <Container>
-    <div className="container">
-      <List>
-        {produtos.map((item: Cardapio) => (
-          <Produtos
-            key={item.id}
-            cardapio={item}
-            />
-        ))}
-      </List>
-    </div>
-  </Container>
+    <Container>
+      <div className="container">
+        <List>
+          {produtos.map((item: Cardapio) => (
+            <Produtos key={item.id} cardapio={item} />
+          ))}
+        </List>
+      </div>
+    </Container>
   )
 }
-  
 
 export default ProdutosList

@@ -20,7 +20,7 @@ export const FooterContent = styled.div`
   width: 100%;
   max-width: 1024px;
   padding: 0 16px;
-  text-align: center; 
+  text-align: center;
 `
 
 export const Logo = styled.img`
@@ -30,9 +30,9 @@ export const Logo = styled.img`
 `
 
 export const SocialMediaIcons = styled.div`
-  display: flex; 
-  justify-content: center; 
-  gap: 8px; 
+  display: flex;
+  justify-content: center;
+  gap: 8px;
   margin-bottom: 80px;
 
   img {
@@ -46,5 +46,5 @@ export const DisclaimerText = styled.p`
   color: ${cores.vermelho};
   text-align: center;
   width: 100%;
-  max-width: 480px; 
-`;
+  max-width: 480px;
+`

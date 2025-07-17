@@ -37,8 +37,8 @@ export const Modal = styled.div`
   width: 1024px;
   height: 344px;
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -51,15 +51,15 @@ export const Modal = styled.div`
   }
 
   .fechar {
-  position: absolute;
-  margin: 0;
-  top: 8px;
-  right: 8px;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+    position: absolute;
+    margin: 0;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
   }
-  
+
   .overlay {
     position: absolute;
     top: 0;
@@ -81,11 +81,11 @@ export const ModalContent = styled.div`
   }
 
   img {
-  width: 280px;
-  height: 280px;
-  display: flex;
-  object-fit: cover;
-  margin: 32px 24px 32px 32px;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    object-fit: cover;
+    margin: 32px 24px 32px 32px;
   }
 
   h4 {

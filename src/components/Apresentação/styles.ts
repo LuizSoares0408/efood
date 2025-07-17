@@ -6,12 +6,11 @@ export const Container = styled.div`
   height: 280px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 `
 export const Titulo = styled.p`
   font-size: 32px;

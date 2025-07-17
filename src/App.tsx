@@ -10,12 +10,12 @@ import Cart from './components/Cart'
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-      <GlobalCss />
-      <Rotas />
-      <Footer />
-      <Cart/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <GlobalCss />
+        <Rotas />
+        <Footer />
+        <Cart />
+      </BrowserRouter>
     </Provider>
   )
 }

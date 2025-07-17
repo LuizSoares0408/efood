@@ -29,8 +29,7 @@ const Product = ({
   nota,
   id
 }: Props) => {
-
-    const getDescricao = (descricao: string) => {
+  const getDescricao = (descricao: string) => {
     if (descricao.length > 95) {
       return descricao.slice(0, 240) + '...'
     }
@@ -38,23 +37,26 @@ const Product = ({
   }
 
   return (
-  <Card>
-    <Image src={image} alt={title} />
-    <TagsContainer>
-      {destaque && <Tag>Destaque da semana</Tag>} <Tag>{category}</Tag>
-    </TagsContainer>
-    <Titulo>{title}</Titulo>
-    <NotaEstrela>
-      <p>{nota}</p>
-      <img src={estrela} alt="Estrela" />
-    </NotaEstrela>
-    <Descricao>{getDescricao(description)}</Descricao>
-    <Button type="link" to={`/perfil/${id}`} title="Clique aqui para saber mais">
-      Saiba mais
-    </Button>
-  </Card>
+    <Card>
+      <Image src={image} alt={title} />
+      <TagsContainer>
+        {destaque && <Tag>Destaque da semana</Tag>} <Tag>{category}</Tag>
+      </TagsContainer>
+      <Titulo>{title}</Titulo>
+      <NotaEstrela>
+        <p>{nota}</p>
+        <img src={estrela} alt="Estrela" />
+      </NotaEstrela>
+      <Descricao>{getDescricao(description)}</Descricao>
+      <Button
+        type="link"
+        to={`/perfil/${id}`}
+        title="Clique aqui para saber mais"
+      >
+        Saiba mais
+      </Button>
+    </Card>
   )
 }
-
 
 export default Product
