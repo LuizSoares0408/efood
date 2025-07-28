@@ -137,49 +137,50 @@ const Cart = () => {
         .required('O campo "Ano de vencimento" é obrigatório.')
     }),
     onSubmit: async (values) => {
-      console.log('Formulário submetido com valores:', values)
-      const productsPayload = items.map((item) => ({
-        id: item.id,
-        price: item.preco!
-      }))
+      alert('onSubmit foi chamado')
+      // console.log('Formulário submetido com valores:', values)
+      // const productsPayload = items.map((item) => ({
+      //   id: item.id,
+      //   price: item.preco!
+      // }))
 
-      const payloadToSend = {
-        delivery: {
-          receiver: values.fullName,
-          address: {
-            description: values.address,
-            city: values.city,
-            zipCode: values.cep,
-            number: values.number,
-            complement: values.complement
-          }
-        },
-        payment: {
-          card: {
-            name: values.cardDisplayName,
-            number: values.cardNumber,
-            code: Number(values.cardCode),
-            expires: {
-              month: Number(values.expiresMonth),
-              year: Number(values.expiresYear)
-            }
-          }
-        },
-        products: productsPayload
-      }
+      // const payloadToSend = {
+      //   delivery: {
+      //     receiver: values.fullName,
+      //     address: {
+      //       description: values.address,
+      //       city: values.city,
+      //       zipCode: values.cep,
+      //       number: values.number,
+      //       complement: values.complement
+      //     }
+      //   },
+      //   payment: {
+      //     card: {
+      //       name: values.cardDisplayName,
+      //       number: values.cardNumber,
+      //       code: Number(values.cardCode),
+      //       expires: {
+      //         month: Number(values.expiresMonth),
+      //         year: Number(values.expiresYear)
+      //       }
+      //     }
+      //   },
+      //   products: productsPayload
+      // }
 
-      console.log('Payload sendo enviado para a API:', payloadToSend)
+      // console.log('Payload sendo enviado para a API:', payloadToSend)
 
-      try {
-        // Isso executa o POST para a API
-        await purchase(payloadToSend).unwrap()
+      // try {
+      //   // Isso executa o POST para a API
+      //   await purchase(payloadToSend).unwrap()
 
-        // Se o POST for bem-sucedido, então finalize o pedido
-        handleFinishPayment() // Chame esta função aqui
-      } catch (error) {
-        console.error('Falha ao processar a compra:', error)
-        alert('Erro ao finalizar o pedido. Por favor, tente novamente.')
-      }
+      //   // Se o POST for bem-sucedido, então finalize o pedido
+      //   handleFinishPayment() // Chame esta função aqui
+      // } catch (error) {
+      //   console.error('Falha ao processar a compra:', error)
+      //   alert('Erro ao finalizar o pedido. Por favor, tente novamente.')
+      // }
     }
   })
 
@@ -237,7 +238,7 @@ const Cart = () => {
   )
 
   const renderDeliveryForm = () => (
-    <form>
+    <form onSubmit={form.handleSubmit}>
       <>
         <ContentForm>
           <h2>Entrega</h2>
@@ -319,45 +320,7 @@ const Cart = () => {
           type="button"
           title="Continuar com o pagamento"
           onClick={async () => {
-            {
-              // Marque a função como async
-              // Valida o formulário inteiro, mas o Formik só marca os campos tocados
-              // e exibe erros apenas para as regras que falharam
-              const errors = await form.validateForm() // Valida todos os campos
-              form.setTouched(
-                {
-                  fullName: true,
-                  address: true,
-                  city: true,
-                  cep: true,
-                  number: true,
-                  complement: true
-                  // Certifique-se de que APENAS os campos de entrega sejam marcados como touched
-                  // para evitar que erros de pagamento apareçam prematuramente
-                },
-                false // Use 'false' para não mesclar, para ter controle total aqui
-              )
-
-              // Filtra os erros para considerar apenas os campos da entrega
-              const deliveryErrorsExist = Object.keys(errors).some((key) =>
-                [
-                  'fullName',
-                  'address',
-                  'city',
-                  'cep',
-                  'number',
-                  'complement'
-                ].includes(key)
-              )
-
-              if (!deliveryErrorsExist) {
-                handleContinueToPayment()
-              } else {
-                // Se houver erros na entrega, os campos já foram marcados como touched
-                // e as mensagens de erro devem aparecer automaticamente.
-                // O Formik gerencia a exibição das mensagens de erro em <small>{getErrorMessage(...)}</small>
-              }
-            }
+            console.log('clicado')
           }}
         >
           Continuar com o pagamento
