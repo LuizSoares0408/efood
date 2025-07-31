@@ -97,6 +97,14 @@ export const ContentForm = styled.form`
     height: 219px;
   }
 
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: ${cores.letraTag};
+    margin-bottom: 24px;
+    line-height: 22px;
+  }
+
   h2 {
     font-size: 16px;
     font-weight: bold;

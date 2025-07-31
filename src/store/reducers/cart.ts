@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Cardapio } from '../../pages/Home' // Certifique-se de que Cardapio está correto
 
 // Define os tipos de etapas do seu fluxo de checkout
-export type CheckoutStep = 'cart' | 'delivery' | 'payment' | 'confirmation' // Adicione 'confirmation' se houver tela final
+export type CheckoutStep = 'cart' | 'delivery' | 'payment' | 'confirmation'
 
 type CartState = {
   items: Cardapio[]
@@ -46,8 +46,8 @@ const cartSlice = createSlice({
     // <--- OPCIONAL: Ação para limpar o carrinho após finalizar o pedido
     clearCart: (state) => {
       state.items = []
-      state.currentStep = 'cart' // Volta para a primeira etapa
-      state.isOpen = false // Fecha a sidebar
+      // state.currentStep = 'cart' // Volta para a primeira etapa
+      // state.isOpen = false // Fecha a sidebar
     }
   }
 })

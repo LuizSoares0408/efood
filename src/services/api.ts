@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Food } from '../pages/Home'
-import { number } from 'yup'
 
 type Product = {
   id: number
@@ -34,7 +33,7 @@ type PurchasePayload = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
+    baseUrl: 'https://ebac-fake-api.vercel.app/api/efood'
   }),
   endpoints: (builder) => ({
     getFeaturedFood: builder.query<Food[], void>({
